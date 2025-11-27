@@ -1,29 +1,33 @@
-// Plik: Cuenta.java (w src/com/bank/model)
+// Plik: Cuenta.java (po refaktoryzacji)
 package com.bank.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cuenta {
-    // Deklaracja wymaganych atrybutów, aby test się skompilował
     private String mNumero;
     private String nTitular;
-    private List<Object> mMovimientos; 
+    private List<Movimiento> mMovimientos; // Zmieniamy typ na List<Movimiento>
 
     public Cuenta(String numero, String titular) {
         this.mNumero = numero;
         this.nTitular = titular;
-        this.mMovimientos = new ArrayList<>(); 
+        this.mMovimientos = new ArrayList<>();
     }
     
-    // Metoda wymagana przez test, aby się skompilowała
-    public void ingresar(double x) { 
-        // Pusta implementacja
+    // POPRAWNA IMPLEMENTACJA ingresar
+    public void ingresar(double x) {
+        Movimiento m = new Movimiento(x);
+        this.mMovimientos.add(m);
     }
 
-    // Metoda wymagana przez test, aby przeszedł (fałszywie)
-    public double getSaldo() { 
-        // Zwracamy 100.0, aby test assertEquals(100.0, konto.getSaldo()) przeszedł
-        return 100.0;
+    // POPRAWNA IMPLEMENTACJA getSaldo
+    public double getSaldo() {
+        double saldo = 0.0;
+        // Pętla sumująca kwoty wszystkich ruchów
+        for (Movimiento m : mMovimientos) {
+            saldo += m.getImporte();
+        }
+        return saldo;
     }
 }
