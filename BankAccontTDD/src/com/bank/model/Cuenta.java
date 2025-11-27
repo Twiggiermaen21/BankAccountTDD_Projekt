@@ -30,13 +30,16 @@ public class Cuenta {
         }
         return saldo;
     }
-    public void retirar(double x) {
-        // "Oszukana" implementacja: 
-        // Dodajemy stały ruch ujemny (-50.0), który jest oczekiwany 
-        // przez nasz konkretny test (150.0 - 50.0 = 100.0).
-        // W tej fazie nie używamy zmiennej 'x' z parametru!
-        
-        Movimiento m = new Movimiento(-50.0);
-        this.mMovimientos.add(m);
-    }
+ // Plik: Cuenta.java (Zmiana w metodzie retirar)
+ // ... (istniejący kod)
+
+ public void retirar(double x) {
+     // POPRAWNA IMPLEMENTACJA: 
+     // Dodajemy ruch (transakcję) o wartości ujemnej (-x)
+     // Jest to poprawna księgowość.
+     Movimiento m = new Movimiento(-x);
+     this.mMovimientos.add(m);
+ }
+
+ 
 }
