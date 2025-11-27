@@ -30,4 +30,13 @@ public class Cuenta {
         }
         return saldo;
     }
+ // W pliku Cuenta.java
+ // ... (istniejący kod)
+ public void retirar(double x) {
+     // W tej fazie (RED) zostawiamy PUSTĄ implementację.
+     // Zostawienie pustej implementacji sprawi, że:
+     // 1. Kod się skompiluje.
+     // 2. Test ZAWIEŚĆ (fail), bo saldo pozostanie 150.0, a oczekiwane jest 100.0.
+ }
+ // ... (reszta kodu)
 }
